@@ -1,5 +1,6 @@
 import 'package:courses_app/src/constants/images.dart';
 import 'package:courses_app/src/constants/text.dart';
+import 'package:courses_app/src/features/authentication/screen/login/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -45,7 +46,16 @@ class WelcomeScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return const LoginScreen();
+                            },
+                          ),
+                        );
+                      },
                       child: const Text('Login'),
                     ),
                   ),
