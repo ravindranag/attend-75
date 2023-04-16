@@ -1,6 +1,7 @@
 import 'package:courses_app/src/constants/images.dart';
 import 'package:courses_app/src/constants/text.dart';
 import 'package:courses_app/src/features/authentication/screen/login/login_screen.dart';
+import 'package:courses_app/src/features/authentication/screen/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -64,7 +65,16 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: FilledButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return const SignUpScreen();
+                            },
+                          ),
+                        );
+                      },
                       child: const Text('Signup'),
                     ),
                   ),

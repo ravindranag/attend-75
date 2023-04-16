@@ -1,24 +1,24 @@
 import 'package:courses_app/src/constants/images.dart';
-import 'package:courses_app/src/features/authentication/screen/signup/signup_screen.dart';
+import 'package:courses_app/src/features/authentication/screen/login/login_screen.dart';
 import 'package:courses_app/src/widgets/common/outlined_password_text_field.dart';
 import 'package:courses_app/src/widgets/common/outlined_text_field.dart';
 import 'package:flutter/material.dart';
 
-class LoginForm extends StatefulWidget {
-  const LoginForm({
+class SignUpForm extends StatefulWidget {
+  const SignUpForm({
     super.key,
   });
 
   @override
-  State<LoginForm> createState() => _LoginFormState();
+  State<SignUpForm> createState() => _SignUpFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _SignUpFormState extends State<SignUpForm> {
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-
   final TextEditingController _passwordController = TextEditingController();
 
-  void _handleLogin() {
+  void _handleSignUp() {
     print({_emailController.text, _passwordController.text});
   }
 
@@ -30,6 +30,15 @@ class _LoginFormState extends State<LoginForm> {
           padding: const EdgeInsets.symmetric(vertical: 30.0),
           child: Column(
             children: [
+              OutlinedTextField(
+                label: const Text(
+                  'Name',
+                ),
+                controller: _nameController,
+              ),
+              const SizedBox(
+                height: 16.0,
+              ),
               OutlinedTextField(
                 label: const Text(
                   'Email',
@@ -48,25 +57,15 @@ class _LoginFormState extends State<LoginForm> {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10.0),
-          child: Column(
-            children: [
-              TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'Forgot password?',
-                ),
+          child: SizedBox(
+            width: double.infinity,
+            child: FilledButton(
+              style: FilledButton.styleFrom(),
+              onPressed: _handleSignUp,
+              child: const Text(
+                'Signup',
               ),
-              SizedBox(
-                width: double.infinity,
-                child: FilledButton(
-                  style: FilledButton.styleFrom(),
-                  onPressed: _handleLogin,
-                  child: const Text(
-                    'Login',
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
         ),
         const Text('OR'),
@@ -90,7 +89,7 @@ class _LoginFormState extends State<LoginForm> {
                 const SizedBox(
                   width: 8.0,
                 ),
-                const Text('Login with Google')
+                const Text('Signup with Google')
               ],
             ),
           ),
@@ -103,17 +102,17 @@ class _LoginFormState extends State<LoginForm> {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return const SignUpScreen();
+                    return const LoginScreen();
                   },
                 ),
               );
             },
             child: Text.rich(TextSpan(
-                text: "Don't have an account?",
+                text: "Already have an account?",
                 style: Theme.of(context).textTheme.bodyLarge,
                 children: [
                   TextSpan(
-                    text: ' Signup',
+                    text: ' Login',
                     style: Theme.of(context)
                         .textTheme
                         .bodyLarge
