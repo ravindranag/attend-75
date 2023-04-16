@@ -1,8 +1,11 @@
 import 'package:courses_app/src/constants/images.dart';
+import 'package:courses_app/src/constants/text.dart';
 import 'package:courses_app/src/features/authentication/screen/signup/signup_screen.dart';
 import 'package:courses_app/src/widgets/common/outlined_password_text_field.dart';
 import 'package:courses_app/src/widgets/common/outlined_text_field.dart';
 import 'package:flutter/material.dart';
+
+import 'forgot_password_bottom_sheet.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -51,7 +54,16 @@ class _LoginFormState extends State<LoginForm> {
           child: Column(
             children: [
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  showModalBottomSheet(
+                      context: context,
+                      // enableDrag: true,
+                      isScrollControlled: true,
+                      useSafeArea: true,
+                      builder: (context) {
+                        return const ForgotPasswordBottomSheet();
+                      });
+                },
                 child: const Text(
                   'Forgot password?',
                 ),
@@ -126,3 +138,5 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 }
+
+
