@@ -17,80 +17,78 @@ class SubjectCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
-      child: OutlinedCard(
-        child: InkWell(
-          onTap: () => onTap!(),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        subjectName,
-                        style: Theme.of(context).textTheme.titleLarge?.apply(
-                            color: Theme.of(context).colorScheme.primary),
-                      ),
+    return OutlinedCard(
+      child: InkWell(
+        onTap: () => onTap!(),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      subjectName,
+                      style: Theme.of(context).textTheme.titleLarge?.apply(
+                          color: Theme.of(context).colorScheme.primary),
                     ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.arrow_forward),
-                    )
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Divider(
-                    color: Theme.of(context).colorScheme.onSecondaryContainer,
                   ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.arrow_forward),
+                  )
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Divider(
+                  color: Theme.of(context).colorScheme.onSecondaryContainer,
                 ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        '${(attended / classes * 100).toStringAsFixed(1).toString()}%',
-                        style: Theme.of(context).textTheme.displayMedium?.apply(
-                            color: Theme.of(context).colorScheme.tertiary),
-                      ),
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Text(
+                      '${(attended / classes * 100).toStringAsFixed(1).toString()}%',
+                      style: Theme.of(context).textTheme.displayMedium?.apply(
+                          color: Theme.of(context).colorScheme.tertiary),
                     ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 16.0,
-                          height: 16.0,
-                          child: CircularProgressIndicator(
-                            value: 0.60,
-                            color: Theme.of(context).colorScheme.tertiary,
-                            strokeWidth: 3.0,
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 16.0,
+                        height: 16.0,
+                        child: CircularProgressIndicator(
+                          value: 0.60,
+                          color: Theme.of(context).colorScheme.tertiary,
+                          strokeWidth: 3.0,
+                          backgroundColor: Theme.of(context).colorScheme.tertiaryContainer,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10.0,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            '${classes.toString()} classes',
+                            style: Theme.of(context).textTheme.bodySmall,
                           ),
-                        ),
-                        const SizedBox(
-                          width: 10.0,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              '${classes.toString()} classes',
-                              style: Theme.of(context).textTheme.bodySmall,
-                            ),
-                            Text(
-                              '${attended.toString()} attended',
-                              style: Theme.of(context).textTheme.bodySmall,
-                            ),
-                          ],
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ],
-            ),
+                          Text(
+                            '${attended.toString()} attended',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ],
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ],
           ),
         ),
       ),
