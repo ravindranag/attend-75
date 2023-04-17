@@ -24,7 +24,8 @@ class AuthRepository extends GetxController {
 
   Future<void> createUserWithEmailAndPassword(String email, String password) async {
     try {
-      await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      final userCred = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+
       if(firebaseUser.value != null) {
         Get.offAll(() => const DashboardScreen());
       }

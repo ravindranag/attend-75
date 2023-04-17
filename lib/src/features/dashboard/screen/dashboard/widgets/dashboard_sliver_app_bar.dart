@@ -1,3 +1,5 @@
+import 'package:courses_app/src/constants/images.dart';
+import 'package:courses_app/src/features/profile/screen/profile/profile_screen.dart';
 import 'package:courses_app/src/repository/auth_repository.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +28,29 @@ class DashboardSliverAppBar extends StatelessWidget {
                     scale: scrolled ? 0.0 : 1.0,
                     child: CircleAvatar(
                       radius: scrolled ? 0.0 : 30.0,
-                      child: const Icon(Icons.person),
+                      child: InkResponse(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return const ProfileScreen();
+                              },
+                            ),
+                          );
+                        },
+                        child: FadeInImage.assetNetwork(
+                          image: 'https://picsart.com/ing',
+                          placeholder: appLogo,
+                          fit: BoxFit.contain,
+                          placeholderFit: BoxFit.contain,
+                          width: 100,
+                          height: 100,
+                          imageErrorBuilder: (_, __, ___) {
+                            return Image.asset(appLogo);
+                          },
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -43,17 +67,6 @@ class DashboardSliverAppBar extends StatelessWidget {
             titlePadding:
                 const EdgeInsetsDirectional.only(start: 16, bottom: 16),
           ),
-          actions: [
-            IconButton(
-              onPressed: () {
-                AuthRepository.instance.logout();
-              },
-              icon: Icon(
-                Icons.power_settings_new,
-                color: Theme.of(context).colorScheme.error,
-              ),
-            )
-          ],
           leading: null,
           automaticallyImplyLeading: false,
         );
