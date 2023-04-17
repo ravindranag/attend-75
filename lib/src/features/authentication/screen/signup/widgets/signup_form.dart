@@ -1,5 +1,6 @@
 import 'package:courses_app/src/constants/images.dart';
 import 'package:courses_app/src/features/authentication/controller/signup_controller.dart';
+import 'package:courses_app/src/features/authentication/model/user_model.dart';
 import 'package:courses_app/src/features/authentication/screen/login/login_screen.dart';
 import 'package:courses_app/src/widgets/common/outlined_password_text_field.dart';
 import 'package:courses_app/src/widgets/common/outlined_text_field.dart';
@@ -56,8 +57,13 @@ class SignUpForm extends StatelessWidget {
               child: FilledButton(
                 style: FilledButton.styleFrom(),
                 onPressed: () {
-                  if(formKey.currentState!.validate()) {
-                    SignUpController.instance.registerNewUser(controller.email.text.trim(), controller.password.text.trim());
+                  if (formKey.currentState!.validate()) {
+                    UserModel user = UserModel(
+                      name: controller.name.text.trim(),
+                      email: controller.email.text.trim(),
+                      password: controller.password.text.trim(),
+                    );
+                    SignUpController.instance.registerNewUser(context, user);
                   }
                 },
                 child: const Text(

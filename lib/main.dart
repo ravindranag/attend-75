@@ -1,6 +1,6 @@
 import 'package:courses_app/firebase_options.dart';
 import 'package:courses_app/src/features/authentication/screen/welcome/welcome.dart';
-import 'package:courses_app/src/repository/auth_repository.dart';
+import 'package:courses_app/src/repository/auth/auth_repository.dart';
 import 'package:courses_app/src/theme/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

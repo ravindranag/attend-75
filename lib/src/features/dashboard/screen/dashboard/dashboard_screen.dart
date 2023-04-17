@@ -12,7 +12,7 @@ class DashboardScreen extends StatelessWidget {
       body: const CustomScrollView(
         slivers: <Widget>[
           DashboardSliverAppBar(),
-          SubjectList()
+          SubjectList(),
         ],
       ),
       floatingActionButton: FloatingActionButton(

@@ -1,4 +1,5 @@
-import 'package:courses_app/src/repository/auth_repository.dart';
+import 'package:courses_app/src/features/authentication/model/user_model.dart';
+import 'package:courses_app/src/repository/auth/auth_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +10,7 @@ class SignUpController extends GetxController {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
-  void registerNewUser(String email, String password) {
-    AuthRepository.instance.createUserWithEmailAndPassword(email, password);
+  void registerNewUser(BuildContext context, UserModel user) {
+    AuthRepository.instance.createUserWithEmailAndPassword(context, user);
   }
 }

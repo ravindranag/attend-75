@@ -1,5 +1,4 @@
-import 'package:courses_app/src/constants/images.dart';
-import 'package:courses_app/src/widgets/common/FilledCard.dart';
+import 'package:courses_app/src/repository/auth/auth_repository.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/profile_network_image.dart';
@@ -57,7 +56,9 @@ class ProfileScreen extends StatelessWidget {
                 child: Divider(),
               ),
               FilledButton.tonal(
-                onPressed: () {},
+                onPressed: () {
+                  AuthRepository.instance.logout();
+                },
                 style: FilledButton.styleFrom(
                   padding: const EdgeInsets.symmetric(
                     vertical: 16.0,
