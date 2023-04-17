@@ -1,5 +1,5 @@
-import 'package:courses_app/src/features/authentication/model/user_model.dart';
-import 'package:courses_app/src/repository/auth/auth_repository.dart';
+import 'package:attend_75/src/features/authentication/model/user_model.dart';
+import 'package:attend_75/src/repository/auth/auth_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 

@@ -1,6 +1,6 @@
-import 'package:courses_app/src/constants/text.dart';
-import 'package:courses_app/src/features/authentication/screen/login/verify_otp_screeen.dart';
-import 'package:courses_app/src/widgets/common/outlined_text_field.dart';
+import 'package:attend_75/src/constants/text.dart';
+import 'package:attend_75/src/features/authentication/screen/login/verify_otp_screeen.dart';
+import 'package:attend_75/src/widgets/common/outlined_text_field.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPasswordBottomSheet extends StatelessWidget {

@@ -1,12 +1,14 @@
-import 'package:courses_app/firebase_options.dart';
-import 'package:courses_app/src/features/authentication/screen/welcome/welcome.dart';
-import 'package:courses_app/src/repository/auth/auth_repository.dart';
-import 'package:courses_app/src/theme/app_theme.dart';
+import 'package:attend_75/firebase_options.dart';
+import 'package:attend_75/src/features/authentication/screen/welcome/welcome.dart';
+import 'package:attend_75/src/repository/auth/auth_repository.dart';
+import 'package:attend_75/src/theme/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 
-void main() {
+Future<void> main() async {
+  await dotenv.load(fileName: '.env');
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp(options: DefaultFirebaseOptions.android)
       .then((value) => Get.put(AuthRepository()));

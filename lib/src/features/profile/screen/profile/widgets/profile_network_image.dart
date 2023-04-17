@@ -1,4 +1,4 @@
-import 'package:courses_app/src/constants/images.dart';
+import 'package:attend_75/src/constants/images.dart';
 import 'package:flutter/material.dart';
 
 class ProfileNetworkImage extends StatelessWidget {

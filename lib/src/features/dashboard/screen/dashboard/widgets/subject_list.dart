@@ -1,4 +1,4 @@
-import 'package:courses_app/src/features/dashboard/model/subject/subject_model.dart';
+import 'package:attend_75/src/features/dashboard/model/subject/subject_model.dart';
 import 'package:flutter/material.dart';
 
 import 'subject_card.dart';

@@ -1,9 +1,9 @@
-import 'package:courses_app/src/constants/images.dart';
-import 'package:courses_app/src/features/authentication/controller/signup_controller.dart';
-import 'package:courses_app/src/features/authentication/model/user_model.dart';
-import 'package:courses_app/src/features/authentication/screen/login/login_screen.dart';
-import 'package:courses_app/src/widgets/common/outlined_password_text_field.dart';
-import 'package:courses_app/src/widgets/common/outlined_text_field.dart';
+import 'package:attend_75/src/constants/images.dart';
+import 'package:attend_75/src/features/authentication/controller/signup_controller.dart';
+import 'package:attend_75/src/features/authentication/model/user_model.dart';
+import 'package:attend_75/src/features/authentication/screen/login/login_screen.dart';
+import 'package:attend_75/src/widgets/common/outlined_password_text_field.dart';
+import 'package:attend_75/src/widgets/common/outlined_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

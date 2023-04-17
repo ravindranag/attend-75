@@ -1,6 +1,5 @@
-import 'package:courses_app/src/constants/images.dart';
-import 'package:courses_app/src/features/profile/screen/profile/profile_screen.dart';
-import 'package:courses_app/src/repository/auth/auth_repository.dart';
+import 'package:attend_75/src/constants/images.dart';
+import 'package:attend_75/src/features/profile/screen/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class DashboardSliverAppBar extends StatelessWidget {

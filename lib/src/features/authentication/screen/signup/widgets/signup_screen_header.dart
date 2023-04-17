@@ -1,5 +1,5 @@
-import 'package:courses_app/src/constants/images.dart';
-import 'package:courses_app/src/constants/text.dart';
+import 'package:attend_75/src/constants/images.dart';
+import 'package:attend_75/src/constants/text.dart';
 import 'package:flutter/material.dart';
 
 

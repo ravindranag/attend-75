@@ -1,9 +1,8 @@
-import 'package:courses_app/src/features/authentication/model/user_model.dart';
-import 'package:courses_app/src/features/authentication/screen/welcome/welcome.dart';
-import 'package:courses_app/src/features/dashboard/screen/dashboard/dashboard_screen.dart';
-import 'package:courses_app/src/repository/exceptions/signup_with_email_password_exception.dart';
-import 'package:courses_app/src/repository/user/user_repository.dart';
-import 'package:courses_app/src/widgets/common/app_snack_bar.dart';
+import 'package:attend_75/src/features/authentication/model/user_model.dart';
+import 'package:attend_75/src/features/authentication/screen/welcome/welcome.dart';
+import 'package:attend_75/src/features/dashboard/screen/dashboard/dashboard_screen.dart';
+import 'package:attend_75/src/repository/exceptions/signup_with_email_password_exception.dart';
+import 'package:attend_75/src/repository/user/user_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

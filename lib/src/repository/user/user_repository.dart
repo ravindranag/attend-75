@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:courses_app/src/features/authentication/model/user_model.dart';
+import 'package:attend_75/src/features/authentication/model/user_model.dart';
 import 'package:get/get.dart';
 
 class UserRepository extends GetxController {

@@ -1,4 +1,4 @@
-import 'package:courses_app/src/repository/auth/auth_repository.dart';
+import 'package:attend_75/src/repository/auth/auth_repository.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/profile_network_image.dart';

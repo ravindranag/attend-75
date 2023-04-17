@@ -1,4 +1,4 @@
-import 'package:courses_app/src/widgets/common/OutlinedCard.dart';
+import 'package:attend_75/src/widgets/common/OutlinedCard.dart';
 import 'package:flutter/material.dart';
 
 class SubjectCard extends StatelessWidget {
