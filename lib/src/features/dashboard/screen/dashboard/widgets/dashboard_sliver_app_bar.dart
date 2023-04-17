@@ -1,3 +1,4 @@
+import 'package:courses_app/src/repository/auth_repository.dart';
 import 'package:flutter/material.dart';
 
 class DashboardSliverAppBar extends StatelessWidget {
@@ -13,9 +14,6 @@ class DashboardSliverAppBar extends StatelessWidget {
         return SliverAppBar(
           pinned: true,
           expandedHeight: 200.0,
-          // titleTextStyle: Theme.of(context).textTheme.headlineMedium?.apply(
-          //   color: onPrimaryContainer
-          // ),
           flexibleSpace: FlexibleSpaceBar(
             title: Stack(
               // mainAxisSize: MainAxisSize.min,
@@ -37,15 +35,25 @@ class DashboardSliverAppBar extends StatelessWidget {
                   child: Text(
                     'Hi Ravindra',
                     style: TextStyle(
-                        color: Theme.of(context).colorScheme.inverseSurface
-                    ),
+                        color: Theme.of(context).colorScheme.inverseSurface),
                   ),
                 ),
               ],
             ),
             titlePadding:
-            const EdgeInsetsDirectional.only(start: 16, bottom: 16),
+                const EdgeInsetsDirectional.only(start: 16, bottom: 16),
           ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                AuthRepository.instance.logout();
+              },
+              icon: Icon(
+                Icons.power_settings_new,
+                color: Theme.of(context).colorScheme.error,
+              ),
+            )
+          ],
           leading: null,
           automaticallyImplyLeading: false,
         );

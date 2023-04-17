@@ -1,20 +1,32 @@
 import 'package:courses_app/src/constants/images.dart';
-import 'package:courses_app/src/features/authentication/controller/signup_controller.dart';
-import 'package:courses_app/src/features/authentication/screen/login/login_screen.dart';
+import 'package:courses_app/src/constants/text.dart';
+import 'package:courses_app/src/features/authentication/controller/login_controller.dart';
+import 'package:courses_app/src/features/authentication/screen/signup/signup_screen.dart';
+import 'package:courses_app/src/features/dashboard/screen/dashboard/dashboard_screen.dart';
 import 'package:courses_app/src/widgets/common/outlined_password_text_field.dart';
 import 'package:courses_app/src/widgets/common/outlined_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SignUpForm extends StatelessWidget {
-  const SignUpForm({
+import 'forgot_password_bottom_sheet.dart';
+
+class LoginForm extends StatelessWidget {
+  const LoginForm({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SignUpController());
+    final controller = Get.put(LoginController());
+
     final formKey = GlobalKey<FormState>();
+
+    void handleLogin() {
+      LoginController.instance.loginExistingUser(
+        controller.email.text.trim(),
+        controller.password.text.trim(),
+      );
+    }
 
     return Form(
       key: formKey,
@@ -24,15 +36,6 @@ class SignUpForm extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 30.0),
             child: Column(
               children: [
-                OutlinedTextField(
-                  label: const Text(
-                    'Name',
-                  ),
-                  controller: controller.name,
-                ),
-                const SizedBox(
-                  height: 16.0,
-                ),
                 OutlinedTextField(
                   label: const Text(
                     'Email',
@@ -51,19 +54,34 @@ class SignUpForm extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),
-            child: SizedBox(
-              width: double.infinity,
-              child: FilledButton(
-                style: FilledButton.styleFrom(),
-                onPressed: () {
-                  if(formKey.currentState!.validate()) {
-                    SignUpController.instance.registerNewUser(controller.email.text.trim(), controller.password.text.trim());
-                  }
-                },
-                child: const Text(
-                  'Signup',
+            child: Column(
+              children: [
+                TextButton(
+                  onPressed: () {
+                    showModalBottomSheet(
+                        context: context,
+                        // enableDrag: true,
+                        isScrollControlled: true,
+                        useSafeArea: true,
+                        builder: (context) {
+                          return const ForgotPasswordBottomSheet();
+                        });
+                  },
+                  child: const Text(
+                    'Forgot password?',
+                  ),
                 ),
-              ),
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton(
+                    style: FilledButton.styleFrom(),
+                    onPressed: handleLogin,
+                    child: const Text(
+                      'Login',
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           const Text('OR'),
@@ -87,7 +105,7 @@ class SignUpForm extends StatelessWidget {
                   const SizedBox(
                     width: 8.0,
                   ),
-                  const Text('Signup with Google')
+                  const Text('Login with Google')
                 ],
               ),
             ),
@@ -100,17 +118,17 @@ class SignUpForm extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return const LoginScreen();
+                      return const SignUpScreen();
                     },
                   ),
                 );
               },
               child: Text.rich(TextSpan(
-                  text: "Already have an account?",
+                  text: "Don't have an account?",
                   style: Theme.of(context).textTheme.bodyLarge,
                   children: [
                     TextSpan(
-                      text: ' Login',
+                      text: ' Signup',
                       style: Theme.of(context)
                           .textTheme
                           .bodyLarge
