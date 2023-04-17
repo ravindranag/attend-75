@@ -14,7 +14,7 @@ class DashboardScreen extends StatelessWidget {
         title: const Text('Hi Ravindra'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: CustomScrollView(
           slivers: <Widget>[
             SliverList(
