@@ -8,6 +8,15 @@ class ProfileController extends GetxController {
 
   final _authRepo = Get.put(AuthRepository());
   final _userRepo = Get.put(UserRepository());
+  late final Rx<UserModel?> currentUser;
+
+
+  @override
+  void onReady() {
+    getCurrentUserDetails().then((value) {
+      currentUser = Rx<UserModel?>(value);
+    });
+  }
 
   Future<UserModel> getCurrentUserDetails() async {
     try {

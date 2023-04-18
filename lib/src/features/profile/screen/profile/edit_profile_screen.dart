@@ -21,7 +21,7 @@ class EditProfileScreen extends StatelessWidget {
     final name = TextEditingController(text: currentUser.name);
     final avatarUrl = TextEditingController(text: currentUser.avatarUrl);
 
-    void navigateToProfileScreen() {
+    void navigateToProfileScreen(UserModel currentUser) {
       Navigator.pop(context);
       Navigator.pushReplacement(
         context,
@@ -41,7 +41,7 @@ class EditProfileScreen extends StatelessWidget {
         );
         // print(currentUser.toJson().toString());
         await profileController.updateCurrentUserDetails(currentUser);
-        navigateToProfileScreen();
+        navigateToProfileScreen(currentUser);
       } on Exception catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

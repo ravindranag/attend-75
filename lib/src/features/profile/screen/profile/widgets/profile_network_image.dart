@@ -7,20 +7,22 @@ class ProfileNetworkImage extends StatelessWidget {
     required this.profileImageUrl,
     this.onTap,
     this.width = 150,
-    this.height = 150
+    this.height = 150,
+    this.padding = const EdgeInsets.all(8.0),
   });
 
   final String? profileImageUrl;
   final VoidCallback? onTap;
   final double width;
   final double height;
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
       height: height,
-      padding: const EdgeInsets.all(8.0),
+      padding: padding,
       decoration: BoxDecoration(
         border: Border.all(
           color: Theme.of(context).colorScheme.outline,

@@ -1,4 +1,5 @@
 import 'package:attend_75/src/features/authentication/model/user_model.dart';
+import 'package:attend_75/src/features/dashboard/screen/dashboard/dashboard_screen.dart';
 import 'package:attend_75/src/features/profile/controller/profile_controller.dart';
 import 'package:attend_75/src/features/profile/screen/profile/edit_profile_screen.dart';
 import 'package:attend_75/src/repository/auth/auth_repository.dart';
@@ -17,6 +18,16 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+              builder: (context) {
+                return const DashboardScreen();
+              },
+            ), (route) => false);
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(

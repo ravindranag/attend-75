@@ -30,6 +30,10 @@ class UserModel {
         avatarUrl: data['avatarUrl']);
   }
 
+  factory UserModel.dummy({ required String name }) {
+    return UserModel(name: name, email: '', password: '');
+  }
+
   toJson() {
     return {
       'name': name,

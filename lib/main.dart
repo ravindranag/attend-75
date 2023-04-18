@@ -1,5 +1,6 @@
 import 'package:attend_75/firebase_options.dart';
 import 'package:attend_75/src/features/authentication/screen/welcome/welcome.dart';
+import 'package:attend_75/src/features/profile/controller/profile_controller.dart';
 import 'package:attend_75/src/repository/auth/auth_repository.dart';
 import 'package:attend_75/src/theme/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -11,7 +12,8 @@ Future<void> main() async {
   await dotenv.load(fileName: '.env');
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp(options: DefaultFirebaseOptions.android)
-      .then((value) => Get.put(AuthRepository()));
+      .then((value) => Get.put(AuthRepository()))
+      .then((value) => Get.put(ProfileController()));
   runApp(const App());
 }
 
