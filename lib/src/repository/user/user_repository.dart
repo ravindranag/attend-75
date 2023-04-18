@@ -10,4 +10,15 @@ class UserRepository extends GetxController {
   Future<void> createUser(UserModel user) async {
     await _db.collection('Users').add(user.toJson());
   }
+
+  Future<UserModel> getUserDetails(String email) async {
+    final snapshot = await _db.collection('Users').where('email', isEqualTo: email).get();
+    final userDetails = snapshot.docs.map((e) => UserModel.fromSnapshot(e)).single;
+    return userDetails;
+  }
+
+  Future<bool> updateUserDetails(UserModel user) async {
+    await _db.collection('Users').doc(user.id).update(user.toJson());
+    return true;
+  }
 }
