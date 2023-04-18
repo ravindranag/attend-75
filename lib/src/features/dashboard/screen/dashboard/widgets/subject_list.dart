@@ -7,49 +7,20 @@ import 'package:get/get.dart';
 
 import 'subject_card.dart';
 
-class SubjectList extends StatefulWidget {
+class SubjectList extends StatelessWidget {
   const SubjectList({
     super.key,
   });
 
   @override
-  State<SubjectList> createState() => _SubjectListState();
-}
-
-class _SubjectListState extends State<SubjectList> {
-  final subjectRepository = Get.put(SubjectRepository());
-  bool loading = false;
-
-  @override
-  void initState() {
-    super.initState();
-    setState(() {
-      loading = true;
-    });
-    subjectRepository.getAllSubjects().then((value) {
-      setState(() {
-        loading = false;
-      });
-    }).catchError((e) {
-      print(e);
-      setState(() {
-        loading = false;
-      });
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final subjectRepository = Get.put(SubjectRepository());
+
     return Obx(
       () => SliverList(
         delegate: SliverChildBuilderDelegate(
           (context, index) {
             if (SubjectRepository.instance.allSubjects.isEmpty) {
-              if (loading) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
               return Center(child: Text('Add a subject to track'));
             }
             SubjectModel subject =

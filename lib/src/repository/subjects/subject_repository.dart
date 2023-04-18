@@ -10,6 +10,12 @@ class SubjectRepository extends GetxController {
   final _authRepo = Get.put(AuthRepository());
   late final allSubjects = <SubjectModel>[].obs;
 
+
+  @override
+  void onReady() {
+    getAllSubjects();
+  }
+
   Future<List<SubjectModel>> getAllSubjects() async {
     // print(_authRepo.firebaseUser.value?.uid);
     // return SubjectModel.subjects;
