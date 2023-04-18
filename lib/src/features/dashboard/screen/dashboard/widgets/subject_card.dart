@@ -51,7 +51,7 @@ class SubjectCard extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      '${(attended / classes * 100).toStringAsFixed(1).toString()}%',
+                      '${classes == 0 ? 0 : (attended / classes * 100).toStringAsFixed(1).toString()}%',
                       style: Theme.of(context).textTheme.displayMedium?.apply(
                           color: Theme.of(context).colorScheme.tertiary),
                     ),
@@ -62,7 +62,7 @@ class SubjectCard extends StatelessWidget {
                         width: 16.0,
                         height: 16.0,
                         child: CircularProgressIndicator(
-                          value: 0.60,
+                          value: classes == 0 ? 0 : attended / classes,
                           color: Theme.of(context).colorScheme.tertiary,
                           strokeWidth: 3.0,
                           backgroundColor: Theme.of(context).colorScheme.tertiaryContainer,
