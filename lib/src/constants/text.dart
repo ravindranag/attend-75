@@ -12,5 +12,5 @@ const String appSignUpTitle = 'Get On Board!';
 const String appSignUpSubtitle = 'Create your profile';
 
 // Forgot password modal
-const String appForgotPasswordModalTitle = 'Verify email';
-const String appForgotPasswordModalSubtitle = 'Verify your email through OTP to reset your password';
+const String appForgotPasswordModalTitle = 'Reset password';
+const String appForgotPasswordModalSubtitle = 'Enter your registered email to receive password reset link';

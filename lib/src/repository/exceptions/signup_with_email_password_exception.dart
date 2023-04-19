@@ -19,6 +19,14 @@ class SignUpWithEmailAndPasswordException {
         return const SignUpWithEmailAndPasswordException(message: 'User not found. Please sign up.');
       case 'wrong-password':
         return const SignUpWithEmailAndPasswordException(message: 'Wrong password.');
+      case 'auth/user-not-found':
+        return const SignUpWithEmailAndPasswordException(message: 'User not found. Please sign up.');
+      case 'auth/invalid-email':
+        return const SignUpWithEmailAndPasswordException(message: 'Email is not valid or badly formatted.');
+      case 'invalid-action-code':
+        return const SignUpWithEmailAndPasswordException(message: 'Invalid code.');
+      case 'expired-action-code':
+        return const SignUpWithEmailAndPasswordException(message: 'Code has expired.');
       default:
         return const SignUpWithEmailAndPasswordException();
     }

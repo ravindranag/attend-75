@@ -65,4 +65,28 @@ class AuthRepository extends GetxController {
   }
 
   Future<void> logout() async => await _auth.signOut();
+
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      final ex = SignUpWithEmailAndPasswordException.code(e.code);
+      throw ex;
+    } catch (_) {
+      const ex = SignUpWithEmailAndPasswordException();
+      throw ex;
+    }
+  }
+
+  Future<void> confirmPasswordReset(String code, String newPassword) async {
+    try {
+      await _auth.confirmPasswordReset(code: code, newPassword: newPassword);
+    } on FirebaseAuthException catch (e) {
+      final ex = SignUpWithEmailAndPasswordException.code(e.code);
+      throw ex;
+    } catch (_) {
+      const ex = SignUpWithEmailAndPasswordException();
+      throw ex;
+    }
+  }
 }
