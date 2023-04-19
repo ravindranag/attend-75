@@ -15,6 +15,10 @@ class SignUpWithEmailAndPasswordException {
         return const SignUpWithEmailAndPasswordException(message: 'Operation is not allowed.');
       case 'user-disabled':
         return const SignUpWithEmailAndPasswordException(message: 'This user has been disabled. Please contact support for help.');
+      case 'user-not-found':
+        return const SignUpWithEmailAndPasswordException(message: 'User not found. Please sign up.');
+      case 'wrong-password':
+        return const SignUpWithEmailAndPasswordException(message: 'Wrong password.');
       default:
         return const SignUpWithEmailAndPasswordException();
     }
