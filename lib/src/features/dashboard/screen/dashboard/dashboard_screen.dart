@@ -44,6 +44,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       child: Divider(),
                     ),
                     const SubjectList(),
+                    const SliverToBoxAdapter(
+                      child: SizedBox(
+                        height: 150.0,
+                      ),
+                    )
                   ],
                 );
               } else {

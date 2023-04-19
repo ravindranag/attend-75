@@ -20,4 +20,8 @@ class SubjectController extends GetxController {
     );
     await _subjectRepository.addNewSubject(newSubject);
   }
+
+  updateSubject(String id, dynamic data) async {
+    await _subjectRepository.updateSubject(id, data);
+  }
 }

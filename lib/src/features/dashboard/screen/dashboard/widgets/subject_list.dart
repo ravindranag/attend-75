@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:attend_75/src/features/dashboard/model/subject/subject_model.dart';
+import 'package:attend_75/src/features/dashboard/screen/subject/subject_detail_screen.dart';
 import 'package:attend_75/src/repository/subjects/subject_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,7 +22,7 @@ class SubjectList extends StatelessWidget {
         delegate: SliverChildBuilderDelegate(
           (context, index) {
             if (SubjectRepository.instance.allSubjects.isEmpty) {
-              return Center(child: Text('Add a subject to track'));
+              return const Center(child: Text('Add a subject to track'));
             }
             SubjectModel subject =
                 SubjectRepository.instance.allSubjects[index];
@@ -33,7 +34,14 @@ class SubjectList extends StatelessWidget {
                 attended: subject.attended,
                 classes: subject.classes,
                 onTap: () {
-                  print('open card ${subject.name}');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return SubjectDetailScreen(subject: subject);
+                      },
+                    ),
+                  );
                 },
               ),
             );

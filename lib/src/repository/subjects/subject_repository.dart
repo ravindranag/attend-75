@@ -24,6 +24,7 @@ class SubjectRepository extends GetxController {
       final snapshot = await _db.collection('Subject').where('ownerId', isEqualTo: uid).get();
       final subjects = snapshot.docs.map((e) => SubjectModel.fromSnapshot(e)).toList();
       // print(subjects);
+      allSubjects.clear();
       allSubjects.insertAll(0, subjects);
       return subjects;
     } catch (e) {
@@ -38,6 +39,11 @@ class SubjectRepository extends GetxController {
     await _db.collection('Subject').add(subject.toJson());
     allSubjects.insert(0, subject);
     // print(allSubjects);
+  }
+
+  updateSubject(String id, dynamic data) async {
+    await _db.collection('Subject').doc(id).update(data);
+    await getAllSubjects();
   }
 
 }

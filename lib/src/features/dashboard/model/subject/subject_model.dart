@@ -44,4 +44,9 @@ class SubjectModel {
   setOwnerId(String oid) {
     ownerId = oid;
   }
+
+  updateCounters(int attended, int classes) {
+    this.attended = attended;
+    this.classes = classes;
+  }
 }

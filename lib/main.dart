@@ -5,12 +5,26 @@ import 'package:attend_75/src/repository/auth/auth_repository.dart';
 import 'package:attend_75/src/theme/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: '.env');
   WidgetsFlutterBinding.ensureInitialized();
+  Brightness brightness = SchedulerBinding.instance.platformDispatcher.platformBrightness;
+  bool isDarkMode = brightness == Brightness.dark;
+  //Setting SysemUIOverlay
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemStatusBarContrastEnforced: true,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarDividerColor: Colors.transparent,
+      systemNavigationBarIconBrightness: isDarkMode ? Brightness.dark : Brightness.light,
+      statusBarIconBrightness: isDarkMode ? Brightness.dark : Brightness.light)
+  );
+  //Setting SystmeUIMode
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: [SystemUiOverlay.top]);
   Firebase.initializeApp(options: DefaultFirebaseOptions.android)
       .then((value) => Get.put(AuthRepository()))
       .then((value) => Get.put(ProfileController()));

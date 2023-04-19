@@ -2,7 +2,7 @@ import 'package:attend_75/src/widgets/common/OutlinedCard.dart';
 import 'package:flutter/material.dart';
 
 class SubjectCard extends StatelessWidget {
-  SubjectCard({
+  const SubjectCard({
     super.key,
     required this.subjectName,
     required this.attended,
@@ -10,16 +10,16 @@ class SubjectCard extends StatelessWidget {
     this.onTap
   });
 
-  String subjectName;
-  int classes;
-  int attended;
-  Function? onTap;
+  final String subjectName;
+  final int classes;
+  final int attended;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return OutlinedCard(
       child: InkWell(
-        onTap: () => onTap!(),
+        onTap: onTap,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -34,10 +34,7 @@ class SubjectCard extends StatelessWidget {
                           color: Theme.of(context).colorScheme.primary),
                     ),
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.arrow_forward),
-                  )
+                  const Icon(Icons.arrow_forward),
                 ],
               ),
               Padding(
