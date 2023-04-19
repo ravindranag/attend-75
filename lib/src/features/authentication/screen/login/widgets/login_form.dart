@@ -1,6 +1,8 @@
 import 'package:attend_75/src/constants/images.dart';
 import 'package:attend_75/src/features/authentication/controller/login_controller.dart';
 import 'package:attend_75/src/features/authentication/screen/signup/signup_screen.dart';
+import 'package:attend_75/src/repository/exceptions/signup_with_email_password_exception.dart';
+import 'package:attend_75/src/utils/show_snack_bar.dart';
 import 'package:attend_75/src/widgets/common/outlined_password_text_field.dart';
 import 'package:attend_75/src/widgets/common/outlined_text_field.dart';
 import 'package:flutter/material.dart';
@@ -19,11 +21,18 @@ class LoginForm extends StatelessWidget {
 
     final formKey = GlobalKey<FormState>();
 
-    void handleLogin() {
-      LoginController.instance.loginExistingUser(
-        controller.email.text.trim(),
-        controller.password.text.trim(),
-      );
+    void handleLogin() async {
+      try {
+        await LoginController.instance.loginExistingUser(
+          controller.email.text.trim(),
+          controller.password.text.trim(),
+        );
+      } on SignUpWithEmailAndPasswordException catch (e) {
+        showSnackBar(context, e.message);
+      } catch (_) {
+        showSnackBar(context, 'Something went wrong');
+      }
+
     }
 
     return Form(

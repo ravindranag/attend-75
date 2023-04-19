@@ -2,6 +2,8 @@ import 'package:attend_75/src/constants/images.dart';
 import 'package:attend_75/src/features/authentication/controller/signup_controller.dart';
 import 'package:attend_75/src/features/authentication/model/user_model.dart';
 import 'package:attend_75/src/features/authentication/screen/login/login_screen.dart';
+import 'package:attend_75/src/repository/exceptions/signup_with_email_password_exception.dart';
+import 'package:attend_75/src/utils/show_snack_bar.dart';
 import 'package:attend_75/src/widgets/common/outlined_password_text_field.dart';
 import 'package:attend_75/src/widgets/common/outlined_text_field.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +18,23 @@ class SignUpForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(SignUpController());
     final formKey = GlobalKey<FormState>();
+
+    void handleSubmit() async {
+      try {
+        if (formKey.currentState!.validate()) {
+          UserModel user = UserModel(
+            name: controller.name.text.trim(),
+            email: controller.email.text.trim(),
+            password: controller.password.text.trim(),
+          );
+          await SignUpController.instance.registerNewUser(user);
+        } else {
+          throw const SignUpWithEmailAndPasswordException();
+        }
+      } on SignUpWithEmailAndPasswordException catch (e) {
+        showSnackBar(context, e.message);
+      }
+    }
 
     return Form(
       key: formKey,
@@ -56,16 +75,7 @@ class SignUpForm extends StatelessWidget {
               width: double.infinity,
               child: FilledButton(
                 style: FilledButton.styleFrom(),
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    UserModel user = UserModel(
-                      name: controller.name.text.trim(),
-                      email: controller.email.text.trim(),
-                      password: controller.password.text.trim(),
-                    );
-                    SignUpController.instance.registerNewUser(context, user);
-                  }
-                },
+                onPressed: handleSubmit,
                 child: const Text(
                   'Signup',
                 ),

@@ -8,7 +8,7 @@ class LoginController extends GetxController {
   final email = TextEditingController();
   final password = TextEditingController();
 
-  void loginExistingUser(String email, String password) {
-    AuthRepository.instance.loginUserWithEmailAndPassword(email, password);
+  Future<void> loginExistingUser(String email, String password) async {
+    await AuthRepository.instance.loginUserWithEmailAndPassword(email, password);
   }
 }

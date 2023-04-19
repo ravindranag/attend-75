@@ -10,7 +10,7 @@ class SignUpController extends GetxController {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
-  void registerNewUser(BuildContext context, UserModel user) {
-    AuthRepository.instance.createUserWithEmailAndPassword(context, user);
+  Future<void> registerNewUser(UserModel user) async {
+    await AuthRepository.instance.createUserWithEmailAndPassword(user);
   }
 }
