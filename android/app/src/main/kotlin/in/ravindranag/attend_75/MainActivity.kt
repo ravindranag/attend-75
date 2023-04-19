@@ -1,4 +1,4 @@
-package com.example.courses_app
+package `in`.ravindranag.attend_75
 
 import io.flutter.embedding.android.FlutterActivity
 
