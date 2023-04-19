@@ -43,6 +43,7 @@ dependencies:
   get: ^4.6.5
   cloud_firestore: ^4.5.1
   flutter_dotenv: ^5.0.2
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +70,10 @@ flutter_native_splash:
     icon_background_color: "#fffbff"
     image_dark: assets/logo/attend75.png
     icon_background_color_dark: "#121212"
+
+flutter_launcher_icons:
+  android: true
+  image_path: "assets/logo/attend75.png"
 
 # The following section is specific to Flutter packages.
 flutter:
