@@ -54,6 +54,16 @@ class LoginForm extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: Column(
               children: [
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton(
+                    style: FilledButton.styleFrom(),
+                    onPressed: handleLogin,
+                    child: const Text(
+                      'Login',
+                    ),
+                  ),
+                ),
                 TextButton(
                   onPressed: () {
                     showModalBottomSheet(
@@ -69,45 +79,35 @@ class LoginForm extends StatelessWidget {
                     'Forgot password?',
                   ),
                 ),
-                SizedBox(
-                  width: double.infinity,
-                  child: FilledButton(
-                    style: FilledButton.styleFrom(),
-                    onPressed: handleLogin,
-                    child: const Text(
-                      'Login',
-                    ),
-                  ),
-                ),
               ],
             ),
           ),
-          const Text('OR'),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10.0),
-            child: OutlinedButton(
-              onPressed: () {},
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50.0),
-                      image: const DecorationImage(
-                          image: AssetImage(googleLogo), fit: BoxFit.contain),
-                      // shape: BoxShape.rectangle
-                    ),
-                    width: 24,
-                    height: 24,
-                  ),
-                  const SizedBox(
-                    width: 8.0,
-                  ),
-                  const Text('Login with Google')
-                ],
-              ),
-            ),
-          ),
+          // const Text('OR'),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(vertical: 10.0),
+          //   child: OutlinedButton(
+          //     onPressed: () {},
+          //     child: Row(
+          //       mainAxisAlignment: MainAxisAlignment.center,
+          //       children: [
+          //         Container(
+          //           decoration: BoxDecoration(
+          //             borderRadius: BorderRadius.circular(50.0),
+          //             image: const DecorationImage(
+          //                 image: AssetImage(googleLogo), fit: BoxFit.contain),
+          //             // shape: BoxShape.rectangle
+          //           ),
+          //           width: 24,
+          //           height: 24,
+          //         ),
+          //         const SizedBox(
+          //           width: 8.0,
+          //         ),
+          //         const Text('Login with Google')
+          //       ],
+          //     ),
+          //   ),
+          // ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: TextButton(
