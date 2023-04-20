@@ -24,4 +24,9 @@ class SubjectController extends GetxController {
   updateSubject(String id, dynamic data) async {
     await _subjectRepository.updateSubject(id, data);
   }
+
+  deleteSubject(String id) async {
+    print(id);
+    await _subjectRepository.deleteSubject(id);
+  }
 }

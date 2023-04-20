@@ -46,4 +46,9 @@ class SubjectRepository extends GetxController {
     await getAllSubjects();
   }
 
+  deleteSubject(String id) async {
+    await _db.collection('Subject').doc(id).delete();
+    allSubjects.removeWhere((element) => element.id == id);
+  }
+
 }
