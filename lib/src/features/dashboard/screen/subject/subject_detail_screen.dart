@@ -44,6 +44,7 @@ class _SubjectDetailScreenState extends State<SubjectDetailScreen> {
   void toggleLoading() => setState(() => loading = !loading);
 
   void handleSave() async {
+    toggleLoading();
     widget.subject.updateCounters(attended, classes);
     print(widget.subject.toJson());
     try {
