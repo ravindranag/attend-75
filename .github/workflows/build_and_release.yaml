@@ -39,12 +39,12 @@ jobs:
           echo $KEY_PROPERTIES | base64 --decode > android/key.properties
           echo $GOOGLE_SERVICES | base64 --decode > android/app/google-services.json
 
-      - name: generate changelog
-        id: changelog
-        uses: loopwerk/tag-changelog@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          exclude_types: other,doc,chore
+#      - name: generate changelog
+#        id: changelog
+#        uses: loopwerk/tag-changelog@v1
+#        with:
+#          token: ${{ secrets.GITHUB_TOKEN }}
+#          exclude_types: other,doc,chore
 
       - name: build apk
         run: |
