@@ -34,10 +34,12 @@ jobs:
           KEYSTORE: ${{ secrets.KEYSTORE }}
           KEY_PROPERTIES: ${{ secrets.KEY_PROPERTIES }}
           GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
+          FLUTTER_CREDENTIALS: ${{ secrets.FLUTTER_CREDENTIALS }}
         run: |
           echo $KEYSTORE | base64 --decode > android/keystore.jks
           echo $KEY_PROPERTIES | base64 --decode > android/key.properties
           echo $GOOGLE_SERVICES | base64 --decode > android/app/google-services.json
+          echo $FLUTTER_CREDENTIALS | base64 --decode > .env
 
 #      - name: generate changelog
 #        id: changelog
