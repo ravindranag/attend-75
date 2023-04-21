@@ -1,0 +1,59 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  discussions: write
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v3
+
+      - name: setup java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'oracle'
+          java-version: '17'
+
+      - name: setup flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.10'
+          channel: 'stable'
+
+      - name: setup environment
+        env:
+          KEYSTORE: ${{ secrets.KEYSTORE }}
+          KEY_PROPERTIES: ${{ secrets.KEY_PROPERTIES }}
+          GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
+        run: |
+          echo $KEYSTORE | base64 --decode > android/keystore.jks
+          echo $KEY_PROPERTIES | base64 --decode > android/key.properties
+          echo $GOOGLE_SERVICES | base64 --decode > android/app/google-services.json
+
+      - name: generate changelog
+        id: changelog
+        uses: loopwerk/tag-changelog@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          exclude_types: other,doc,chore
+
+      - name: build apk
+        run: |
+          flutter build apk
+          mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/attend-75-${{github.ref_name}}.apk
+
+#      - name: create github release
+#        uses: softprops/action-gh-release@v1
+#        with:
+#          body: ${{ steps.changelog.outputs.changes }}
+#          files: |
+#            build/app/outputs/flutter-apk/attend-75-${{github.ref_name}}.apk
